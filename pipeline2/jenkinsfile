@@ -12,7 +12,7 @@ pipeline {
 
         script {
 
-          def gitRepoUrl = 'https://github.com/rohanmane21/Python.git'
+          def gitRepoUrl = 'https://github.com/amar0217/amar.git'
 
           def gitCredentialsId = 'Git-Token' // Optional, if using credentials
 
@@ -20,7 +20,7 @@ pipeline {
 
           checkout([$class: 'GitSCM',
 
-            branches: [[name: '*/Testing']],
+            branches: [[name: '*/testing']],
 
             doGenerateSubmoduleConfigurations: false,
 
@@ -40,7 +40,7 @@ pipeline {
 
       steps{
 
-        echo 'aaaaaaaaaaaaaaaaaaa'
+        echo 'aaannn'
 
       }
 
