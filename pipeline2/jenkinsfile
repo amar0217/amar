@@ -1,47 +1,54 @@
 pipeline {
-    agent any
-    
-    stages {
-        stage('Clone Repository') {
-            steps {
-                // Define the Git repository URL and credentials (if required)
-                script {
-                    def gitRepoUrl = 'https://github.com/amar0217/amar.git'
-                    def gitCredentialsId = 'Git-Token' // Optional, if using credentials
-                    
-                    // Clone the repository
-                    checkout([$class: 'GitSCM', 
-                        branches: [[name: '*/Testing']], 
-                        doGenerateSubmoduleConfigurations: false, 
-                        extensions: [], 
-                        userRemoteConfigs: [[credentialsId: gitCredentialsId, url: gitRepoUrl]]
-                    ])
-                }
-            }
+
+  agent any
+
+  stages {
+
+    stage('Clone Repository') {
+
+      steps {
+
+        // Define the Git repository URL and credentials (if required)
+
+        script {
+
+          def gitRepoUrl = 'https://github.com/rohanmane21/Python.git'
+
+          def gitCredentialsId = 'Git-Token' // Optional, if using credentials
+
+          // Clone the repository
+
+          checkout([$class: 'GitSCM',
+
+            branches: [[name: '*/Testing']],
+
+            doGenerateSubmoduleConfigurations: false,
+
+            extensions: [],
+
+            userRemoteConfigs: [[credentialsId: gitCredentialsId, url: gitRepoUrl]]
+
+          ])
+
         }
-        
-        stage('Run Python Script') {
-            steps {
-                script {
-                    // Assuming your Python script is named 'my_script.py'
-                    def pythonScript = 'my_script.py'
-                    
-                    // Execute the Python script using the 'sh' step
-                    // You may need to specify the Python interpreter if it's not in the PATH
-                    sh "python ${pythonScript}"
-                }
-            }
-        }
+
+      }
+
     }
-    
-    post {
-        success {
-            echo 'Python script ran successfully'
-        }
-        
-        failure {
-            echo 'Python script execution failed'
-        }
-    }
-    // Post-build actions, notifications, etc.
+
+    stage("Run Python file"){
+
+      steps{
+
+        echo 'aaaaaaaaaaaaaaaaaaa'
+
+      }
+
+    }// Add more stages for building, testing, deploying, etc.
+
+  }
+
+  // Post-build actions, notifications, etc.
+
 }
+
